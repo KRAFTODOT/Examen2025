@@ -1,0 +1,29 @@
+name: Deploy Website to Ubuntu Server
+
+on:
+  push:
+    branches:
+      - main # This workflow runs every time a commit is pushed to the 'main' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # The type of machine to run the job on
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Action to download a copy of your repo's code
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3 # A popular action for running commands over SSH
+        with:
+          host: ${{ secrets.HOST_IP }} # The IP address you stored in GitHub Secrets
+          username: ${{ secrets.SSH_USER }} # Your Ubuntu username (e.g., 'ubuntu' or 'johndoe')
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # The private key you stored in GitHub Secrets
+          script: |
+            # --- Commands run ON your Ubuntu Server ---
+            cd /Examen2025 # Navigate to your website directory
+            git pull origin main       # Pull the latest code from the 'main' branch
+            # If you are running a Node.js app, you might add restart commands here:
+            # npm install
+            # pm2 restart app
+            # ----------------------------------------
