@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }} # The private key you stored in GitHub Secrets
           script: |
             # --- Commands run ON your Ubuntu Server ---
-            cd /Examen2025 # Navigate to your website directory
+            cd Examen2025 # Navigate to your website directory
             git pull origin main       # Pull the latest code from the 'main' branch
             # If you are running a Node.js app, you might add restart commands here:
             # npm install
