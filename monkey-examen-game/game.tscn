@@ -1,10 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://cmfw37rae5qac"]
 
-[ext_resource type="Texture2D" uid="uid://c2k6j342slsvi" path="res://Generated Image.png" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://bsooijstd13yf" path="res://monkey_background.png" id="1_80nbo"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1152.0001, 648.00006)
-scale = Vector2(2.3040001, 2.16)
+position = Vector2(288, 164)
+scale = Vector2(1.0000001, 1.0123457)
 texture = ExtResource("1_80nbo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(256, 80, 232, 96, 216, 120, 200, 144, 192, 184, 192, 200, 200, 216, 200, 224, 184, 224, 160, 232, 136, 256, 128, 280, 136, 304, 152, 312, 200, 312, 216, 296, 216, 280, 208, 272, 200, 272, 192, 280, 184, 288, 168, 288, 152, 280, 152, 264, 192, 240, 216, 240, 224, 232, 224, 240, 224, 256, 232, 264, 248, 264, 256, 256, 256, 240, 280, 240, 288, 256, 288, 280, 272, 288, 264, 280, 256, 288, 256, 312, 264, 320, 272, 312, 272, 304, 296, 304, 312, 288, 312, 272, 312, 256, 304, 240, 312, 232, 328, 232, 344, 248, 344, 256, 336, 264, 336, 272, 352, 280, 360, 272, 360, 264, 352, 256, 360, 248, 360, 232, 344, 216, 320, 216, 304, 168, 328, 128, 344, 96, 352, 72, 344, 64, 320, 72, 320, 88, 312, 120, 296, 96, 280, 80)
