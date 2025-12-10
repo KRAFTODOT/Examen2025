@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce8jf405bkf03"]
+
+[ext_resource type="Texture2D" uid="uid://ci225k13msw26" path="res://banana.png" id="1_mb6cj"]
+[ext_resource type="Script" uid="uid://ce57obgrxdnjm" path="res://banana.gd" id="1_s1qo3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s1qo3"]
+
+[node name="Banana" type="RigidBody2D" groups=["banana"]]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_s1qo3")
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_s1qo3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_mb6cj")
+offset = Vector2(-4, -10)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-8, -20)
+polygon = PackedVector2Array(-36, 29, -32, 30, -28, 36, 5, 36, 23, 22, 29, 7, 29, -9, 27, -17, 32, -34, 25, -34, 20, -29, 21, -18, 13, -1, 6, 8, -1, 14, -14, 22, -28, 26, -36, 22)
+
+[connection signal="body_shape_entered" from="." to="." method="_on_mouth_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
