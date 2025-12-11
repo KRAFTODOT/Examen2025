@@ -84,7 +84,6 @@ func _on_banana_eaten():
 
 
 func _on_ball_hit():
-	print("Hit")
 	current_happines+=10
 	if current_happines>=max_happines:
 		current_happines=max_happines
