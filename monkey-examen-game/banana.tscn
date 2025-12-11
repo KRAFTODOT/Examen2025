@@ -13,7 +13,7 @@ mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_s1qo3")
 freeze_mode = 1
 contact_monitor = true
-max_contacts_reported = 5
+max_contacts_reported = 1
 script = ExtResource("1_s1qo3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
