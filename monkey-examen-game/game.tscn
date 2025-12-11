@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmfw37rae5qac"]
+[gd_scene load_steps=15 format=3 uid="uid://cmfw37rae5qac"]
 
 [ext_resource type="Script" uid="uid://b0y80h4yjbkj4" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="Texture2D" uid="uid://bsooijstd13yf" path="res://monkey_background.png" id="1_80nbo"]
@@ -36,21 +36,24 @@ bounce = 0.4
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
-size = Vector2(624, 97)
+size = Vector2(624, 98.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(94, 480)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_7jktm"]
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_7jktm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(288, 164)
 scale = Vector2(1.0000001, 1.0123457)
 texture = ExtResource("1_80nbo")
 
 [node name="Banana button" type="Button" parent="."]
 unique_name_in_owner = true
+z_index = 2
 offset_left = 16.0
 offset_top = 40.0
 offset_right = 74.0
@@ -64,6 +67,7 @@ icon_alignment = 1
 
 [node name="Ball button" type="Button" parent="."]
 unique_name_in_owner = true
+z_index = 2
 offset_left = 504.0
 offset_top = 40.0
 offset_right = 562.0
@@ -100,29 +104,101 @@ position = Vector2(273, 147)
 rotation = 1.0945842
 shape = SubResource("CapsuleShape2D_feb5d")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Bounds" type="StaticBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(288, 372)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(288, 370.25)
 shape = SubResource("RectangleShape2D_e2o6t")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(288, -48.5)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(288, -49.375)
 shape = SubResource("RectangleShape2D_e2o6t")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
 position = Vector2(-48, 160)
 shape = SubResource("RectangleShape2D_feb5d")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
 position = Vector2(624, 152)
 shape = SubResource("RectangleShape2D_feb5d")
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_fc0e3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(0.932482, 0.932482, 0.932482, 1)
+z_index = 1
+offset_top = 320.0
+offset_right = 576.0
+offset_bottom = 384.0
+
+[node name="Grey_back" type="Sprite2D" parent="CanvasLayer/Panel"]
+self_modulate = Color(0.26239687, 0.26239687, 0.26239687, 1)
+position = Vector2(287.75, 31.75)
+scale = Vector2(576.5, 64.5)
+texture = SubResource("CanvasTexture_7jktm")
+
+[node name="Banana_icon" type="Sprite2D" parent="CanvasLayer/Panel"]
+position = Vector2(15.749998, 15.750015)
+scale = Vector2(0.65000004, 0.6500007)
+texture = ExtResource("5_ryrav")
+
+[node name="Banana description" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 272.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 11
+text = "Drag banana to the mouth to feed monkey"
+vertical_alignment = 1
+
+[node name="Ball_icon" type="Sprite2D" parent="CanvasLayer/Panel"]
+position = Vector2(15.999999, 48.00002)
+scale = Vector2(0.65000004, 0.6500007)
+texture = ExtResource("6_eow3j")
+
+[node name="Ball description" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 11
+text = "Throw ball to play with monkey"
+vertical_alignment = 1
+
+[node name="Left mouse click description" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 328.0
+offset_right = 568.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 11
+text = "Hold LEFT MOUSE button to drag objects"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Right mouse click description" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 32.0
+offset_right = 568.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 11
+text = "Press RIGHT MOUSE button to delete objects"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Donate button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 264.0
+offset_right = 329.0
+offset_bottom = 64.0
+text = "Donate"
 
 [connection signal="pressed" from="Banana button" to="." method="_on_banana_button_pressed"]
 [connection signal="pressed" from="Ball button" to="." method="_on_ball_button_pressed"]

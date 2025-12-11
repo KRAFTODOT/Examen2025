@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-var mouse_offset = Vector2.ZERO
-var is_dragging = false
+var mouse_offset = Vector2.ZERO #Variable that allow track physics
+var is_dragging = false #Variable that allow track dragging
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -13,6 +13,9 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			else:
 				is_dragging = false
 				freeze = false # Release freeze
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.pressed:
+				self.queue_free() #Delete object
 
 func _process(delta):
 	if is_dragging:
