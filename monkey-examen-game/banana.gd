@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal banana_eaten
+
 var mouse_offset = Vector2.ZERO #Variable that allow track physics
 var is_dragging = false #Variable that allow track dragging
 
@@ -32,5 +34,6 @@ func _integrate_forces(state):
 func _on_mouth_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("mouth"):
 		get_parent().sound.play() 
+		banana_eaten.emit()
 		#Plays chewing sound when banana is eaten
 		self.queue_free()

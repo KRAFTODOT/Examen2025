@@ -15,14 +15,18 @@ collision_mask = 3
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_41u45")
 freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_41u45")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
-shape = SubResource("CircleShape2D_41u45")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("1_x8fbi")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_41u45")
+
+[connection signal="body_entered" from="." to="." method="_on_monkey_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://poa3p8nxgroa"]
+
+[ext_resource type="Script" uid="uid://bmmh2x7ycndys" path="res://game_over.gd" id="1_y26ei"]
+
+[node name="Game over" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_y26ei")
+
+[node name="Panel2" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0.48235294)
+offset_right = 576.0
+offset_bottom = 384.0
+
+[node name="Panel" type="Panel" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -168.0
+offset_right = 216.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game over message" type="Label" parent="Panel2/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 24.0
+offset_right = 104.0
+offset_bottom = 74.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="Panel2/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -72.0
+offset_right = -8.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart"
+
+[node name="Donate" type="Button" parent="Panel2/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -72.0
+offset_right = 88.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Donate"
+
+[connection signal="pressed" from="Panel2/Panel/Restart" to="." method="_on_restart_pressed"]
